@@ -819,21 +819,3 @@ def thing(x):
         except ValueError:
             return x
           
-def main():
-  log=None
-  all={}
-  now=[]
-  for line in sys.stdin:
-    for word in line.split():
-      word = thing(word)
-      if isinstance(word,str):
-        now = all[word] = all.get(word,[])
-      else:
-        now += [word]
-  rdivDemo( [ [k] + v for k,v in all.items() ] ) 
-
-  
-if args.demo:
-  _rdivs()
-else:
-  main()
