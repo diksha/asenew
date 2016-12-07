@@ -274,8 +274,8 @@ def differential_evolution(model = Tuner_Model()):
 
 def main():
     seed=[]
-    models = [dtlz.dtlz1]
-    objs = [2]
+    models = [dtlz.dtlz1, dtlz.dtlz3, dtlz.dtlz5, dtlz.dtlz7]
+    objs = [2, 4, 6, 8]
     decs = [10, 20, 40]
     lower = [0.01, 50, 500]
     upper = [0.5, 100, 1000]
@@ -291,11 +291,11 @@ def main():
                 untune = [run_name+'_u']
                 for i in xrange(20):
                     ga_tuned = GA(model, num_objs, num_decs, *ga_params)
-                    res_t = ga_tuned.run()
-                    tune.append(res_t.hyper_vol)
                     ga_untuned = GA(model, num_objs, num_decs, prob_mut=0.05, num_candidates=100, num_generations=100)
-                    res_u = ga_untuned.run()
-                    untune.append(res_u.hyper_vol)
+                    res_tuned = ga_tuned.run()
+                    tune.append(res_tuned.hyper_vol)
+                    res_untuned = ga_untuned.run()
+                    untune.append(res_untuned.hyper_vol)
                 rdiv_ip.append(tune)
                 rdiv_ip.append(untune)
                 print rdiv_ip
