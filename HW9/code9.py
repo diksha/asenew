@@ -8,7 +8,7 @@ import hve
 import cProfile
 import glob
 import pickle
-from sk import rdivDemo
+from stats import rdivDemo
 
 class candidate:
     num_objs = 10
